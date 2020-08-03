@@ -1,5 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -7,7 +9,6 @@
     <OutputType>Exe</OutputType>
     <RootNamespace>Sample</RootNamespace>
     <AssemblyName>Sample</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,19 +29,7 @@
     <Externalconsole>true</Externalconsole>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Program.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
-  <ItemGroup>
-    <None Include="FodyWeavers.xml" />
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <MySourceFiles Include="..\Undisposed.Fody\bin\Debug\netstandard2.0\Undisposed.Fody.dll" />
+    <MySourceFiles Include="..\Undisposed.Fody\bin\Debug\netstandard2.1\Undisposed.Fody.dll" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Undisposed.Fody\Undisposed.Fody.csproj">
@@ -52,7 +41,8 @@
     <!-- This is usually done in Weaver.props -->
     <WeaverFiles Include="..\Tools\Undisposed.Fody.dll" />
   </ItemGroup>
-  <Target Name="BeforeBuild">
+  <Target Name="CopyFiles" BeforeTargets="CoreCompile">
+    <Message Text="Copying Undisposed.Fody.dll" Importance="normal" />
     <MakeDir Directories="..\Tools" />
     <Copy SourceFiles="@(MySourceFiles)" DestinationFolder="..\Tools" />
   </Target>

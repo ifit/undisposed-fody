@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
+    <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Undisposed.Fody</AssemblyName>
     <AssemblyTitle>Undisposed.Fody</AssemblyTitle>
     <RootNamespace>Undisposed</RootNamespace>
@@ -14,13 +14,11 @@
     <Product>Undisposed.Fody</Product>
     <Copyright>Copyright © 2014-2019 Eberhard Beilharz</Copyright>
     <PackageId>Undisposed.Fody</PackageId>
+    <PackageVersion>4.0.0-MOB-886-update-fody</PackageVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/ermshiperete/undisposed-fody</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageOutputPath>../nuget</PackageOutputPath>
     <PackageTags>IDisposable, Dispose, ILWeaving, Fody, Cecil, Debug</PackageTags>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
     <AppendToReleaseNotesProperty><![CDATA[
 See full changelog at https://github.com/ermshiperete/undisposed-fody/blob/master/CHANGELOG.md]]>
     </AppendToReleaseNotesProperty>
@@ -29,18 +27,10 @@ See full changelog at https://github.com/ermshiperete/undisposed-fody/blob/maste
   <ItemGroup>
     <PackageReference Include="Fody" Version="6.0.0" />
     <PackageReference Include="FodyHelpers" Version="6.0.0" />
-    <PackageReference Include="GitVersionTask" Version="5.0.1">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="SIL.ReleaseTasks" Version="[2.2.0,)">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <TfmSpecificPackageFile Include="bin\$(Configuration)\netstandard2.0\$(PackageId).dll"
-      PackagePath="weaver\$(PackageId).dll" />
-    <TfmSpecificPackageFile Include="Weaver.props"
-      PackagePath="build\$(PackageId).props" />
+    <TfmSpecificPackageFile Include="bin\$(Configuration)\netstandard2.1\$(PackageId).dll" PackagePath="weaver\$(PackageId).dll" />
+    <TfmSpecificPackageFile Include="Weaver.props" PackagePath="build\$(PackageId).props" />
   </ItemGroup>
 </Project>

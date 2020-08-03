@@ -190,3 +190,4 @@ FakesAssemblies/
 /Tools/
 /.vs/
 /nuget/
+Sample/FodyWeavers.xsd
