@@ -2,43 +2,38 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Undisposed</AssemblyName>
-    <AssemblyTitle>Undisposed</AssemblyTitle>
-    <RootNamespace>UndisposedExe</RootNamespace>
-    <OutputType>WinExe</OutputType>
+    <AssemblyName>Undisposed.Fody</AssemblyName>
+    <AssemblyTitle>Undisposed.Fody</AssemblyTitle>
+    <RootNamespace>Undisposed</RootNamespace>
     <Configurations>Debug;Release</Configurations>
-    <Description>Tool that helps tracking down undisposed objects.</Description>
+    <NoWarn>NU5118,NU5100</NoWarn>
+    <DisableFody>true</DisableFody>
+    <Description>Fody add-in that helps tracking down undisposed objects.</Description>
     <Company>Eberhard Beilharz</Company>
     <Authors>Eberhard Beilharz</Authors>
-    <Product>Undisposed</Product>
+    <Product>Undisposed.Fody</Product>
     <Copyright>Copyright © 2014-2019 Eberhard Beilharz</Copyright>
+    <PackageId>Undisposed.Fody</PackageId>
+    <PackageVersion>4.0.0-MOB-886-update-fody</PackageVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/ermshiperete/undisposed-fody</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
-    <PackageOutputPath>../output</PackageOutputPath>
-    <IncludeSymbols>true</IncludeSymbols>
-    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PackageTags>IDisposable, Dispose, ILWeaving, Fody, Cecil, Debug</PackageTags>
     <AppendToReleaseNotesProperty><![CDATA[
 See full changelog at https://github.com/ermshiperete/undisposed-fody/blob/master/CHANGELOG.md]]>
     </AppendToReleaseNotesProperty>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Fody" Version="6.2.4" />
     <PackageReference Include="FodyHelpers" Version="6.2.4" />
-    <PackageReference Include="GitVersionTask" Version="5.0.1">
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
-    <PackageReference Include="SIL.ReleaseTasks" Version="[2.2.0,)">
+    <PackageReference Include="SIL.ReleaseTasks" Version="2.2.0">
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="undisposed" />
+    <TfmSpecificPackageFile Include="bin\$(Configuration)\netstandard2.1\$(PackageId).dll" PackagePath="weaver\$(PackageId).dll" />
+    <TfmSpecificPackageFile Include="Weaver.props" PackagePath="build\$(PackageId).props" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Undisposed.Fody\Undisposed.Fody.csproj" />
-  </ItemGroup>
-
 </Project>

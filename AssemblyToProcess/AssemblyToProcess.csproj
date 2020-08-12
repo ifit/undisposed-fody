@@ -1,6 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>    
+  </PropertyGroup>
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -9,9 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>AssemblyToProcess</RootNamespace>
     <AssemblyName>AssemblyToProcess</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -31,42 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AllObjectsDisposed.cs" />
-    <Compile Include="DerivedClass.cs" />
-    <Compile Include="DerivedClassImplementsIDisposable.cs" />
-    <Compile Include="DerivedFromExternalClass.cs">
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="DerivedFromInternalClass.cs" />
-    <Compile Include="InternalClass.cs" />
-    <Compile Include="NoDefaultCtor.cs" />
-    <Compile Include="ObjectNotDisposed.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TwoConstructorsCallingEachOther.cs" />
-    <Compile Include="TwoIndependentConstructors.cs" />
-    <Compile Include="UntrackedClass.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Undisposed\Undisposed.csproj">
+    <ProjectReference Include="..\Undisposed.Fody\Undisposed.Fody.csproj">
       <Project>{abb105a9-6629-43a7-9edc-5ef6c4f6be5a}</Project>
-      <Name>Undisposed</Name>
+      <Name>Undisposed.Fody</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
