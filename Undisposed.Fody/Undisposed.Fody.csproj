@@ -14,7 +14,7 @@
     <Product>Undisposed.Fody</Product>
     <Copyright>Copyright © 2014-2019 Eberhard Beilharz</Copyright>
     <PackageId>Undisposed.Fody</PackageId>
-    <PackageVersion>4.0.0-MOB-886-update-fody</PackageVersion>
+    <PackageVersion>4.0.0</PackageVersion>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/ermshiperete/undisposed-fody</PackageProjectUrl>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
