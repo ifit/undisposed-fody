@@ -188,3 +188,6 @@ UpgradeLog*.htm
 FakesAssemblies/
 
 /Tools/
+/.vs/
+/nuget/
+Sample/FodyWeavers.xsd
